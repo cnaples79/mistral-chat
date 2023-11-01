@@ -17,11 +17,9 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-image: url('/assets/background_4.jpg');
+  background-size: cover;      /* This will cover the entire viewport */
+  background-repeat: no-repeat; /* This will prevent the image from repeating */
+  background-position: center;  /* This will center the image */
+  font-family: Arial, sans-serif;
 }
