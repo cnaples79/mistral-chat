@@ -27,11 +27,20 @@ const Home: React.FC = () => {
     setMessages([]);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSend();
+    }
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <div style={{ height: '80vh', overflowY: 'auto' }}>
         {messages.map((message, idx) => (
-          <div key={idx} style={{ marginBottom: '10px', textAlign: message.role === 'user' ? 'right' : 'left' }}>
+          <div 
+            key={idx}
+            className={message.role === 'user' ? 'user-message' : 'bot-message'} 
+            style={{ marginBottom: '10px', float: message.role === 'user' ? 'right' : 'left',  }}>   
             <span>{message.content}</span>
           </div>
         ))}
@@ -41,6 +50,7 @@ const Home: React.FC = () => {
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           style={{ flex: 1, marginRight: '10px' }}
         />
         <button onClick={handleSend}>Send</button>
